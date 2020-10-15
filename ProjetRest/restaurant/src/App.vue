@@ -1,27 +1,19 @@
 <template>
   <div id="app">
-    <ListeDesRestaurants msg="Coucou les M1"/>
+    <router-link to="/">[Home]</router-link>
+    <router-link to="/restaurant">[Restaurant]</router-link>
+    <router-link to="/hello">[HelloWorld]</router-link>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ListeDesRestaurants from './components/ListeDesRestaurants.vue'
-
 export default {
-  name: 'App',
-  components: {
-    ListeDesRestaurants
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

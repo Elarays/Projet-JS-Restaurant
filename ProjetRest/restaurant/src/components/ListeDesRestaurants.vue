@@ -33,31 +33,42 @@
         v-model="pagesize"
       />{{ pagesize }}
     </p>
-    <button :disabled="page === 0" @click="pagePrecedente()">Précédent</button
+    <md-button md-raised :disabled="page === 0" @click="pagePrecedente()"
+      >Précédent</md-button
     >&nbsp;&nbsp;
-    <button :disabled="page === nbPagesTotal" @click="pageSuivante()">
+    <md-button
+      md-raised
+      :disabled="page === nbPagesTotal"
+      @click="pageSuivante()"
+    >
       Suivant
-    </button>
+    </md-button>
     &nbsp; Page courante : {{ page }}
     <br />
-    <table>
-      <tr>
-        <th>Nom</th>
-        <th>Cuisine</th>
-      </tr>
-      <tbody>
-        <tr
-          v-for="(r, index) in restaurants"
-          :key="index"
-          @click="supprimerRestaurant(r)"
-          :style="{ backgroundColor: getColor(index) }"
-          :class="{ bordureRouge: index === 2 }"
-        >
-          <td>{{ r.name }}</td>
-          <td>{{ r.cuisine }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
+      <md-table-row>
+        <md-table-head>Nom</md-table-head>
+        <md-table-head>Cuisine</md-table-head>
+      </md-table-row>
+      <md-table-row
+    
+        slot="md-table-row"
+        slot-scope="{ item, index }"
+        :style="{ backgroundColor: getColor(index) }"
+        :class="{ bordureRouge: index === 2 }"
+      >
+        <md-table-cell md-label="Name" md-sort-by="name">{{
+          item.name
+        }}</md-table-cell>
+        <md-table-cell md-label="cuisine" md-sort-by="cuisine">{{
+          item.cuisine
+        }}</md-table-cell>
+        <md-table-cell md-label="Action">
+          <router-link :to="'/restaurant/' + item._id">[Detail d'un Restaurant]
+          </router-link>
+        </md-table-cell>
+      </md-table-row>
+    </md-table>
   </div>
 </template>
 
@@ -149,6 +160,7 @@ export default {
       // Récupération des valeurs des champs du formulaire
       // en prévision d'un envoi multipart en ajax/fetch
       let donneesFormulaire = new FormData(form);
+      location.reload();
 
       let url = "http://localhost:8080/api/restaurants";
 
