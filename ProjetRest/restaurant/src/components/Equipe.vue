@@ -3,16 +3,16 @@
     <div class="block">
       <v-main>
         <h2 class="text-center">Our Teams</h2>
-        <v-row>
-          <v-col
+        <v-row  >
+          <v-col  
             v-for="item in items"
             :key="item.id"
             class="d-flex child-flex"
             cols="12"
             sm="4"
           >
-            <v-card flat tile class="mx-auto">
-              <v-img
+            <v-card  flat tile class="mx-auto">
+              <v-img 
                 :src="item.src"
                 aspect-ratio="1"
                 class="grey lighten-2"
@@ -42,6 +42,12 @@ export default {
           title: 'Etudiant'
         },
         {
+          id: 3,
+          src: require("../assets/img/void.jpg"),
+          name: '',
+          title: ''
+        },
+        {
           id: 2,
           src: require("../assets/img/said.jpeg"),
           name: 'Said Elarays',
@@ -52,3 +58,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+v-img{
+  padding: 60px;
+  margin-left: 60px;
+}
+</style>

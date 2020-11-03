@@ -56,6 +56,7 @@
     &nbsp; Page courante : {{ page }}
     <br />
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
+
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
         </div>
@@ -63,8 +64,20 @@
         <md-field md-clearable class="md-toolbar-section-end">
           <md-input placeholder="Search by name..." v-model="nomRestauRecherche" type="text"  @input="chercherRestaurants()" />
         </md-field>
-      </md-table-toolbar>
+        </md-table-toolbar>
 
+
+      <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
+        <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
+        <div class="md-toolbar-section-end">
+          <md-button class="md-icon-button" @click="supprimerRestaurant(r.id)">
+            <md-icon>delete</md-icon>
+          </md-button>&nbsp;&nbsp;
+        </div>
+        </md-table-toolbar>
+        
+      
+      
       <md-table-empty-state
         md-label="No restaurant found"
         :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new user.`">
@@ -74,10 +87,22 @@
         <md-table-head>Cuisine</md-table-head>
         <md-table-head>Ville</md-table-head>
       </md-table-row>
+      
+      
+      <md-table-row
+      slot="md-table-row"
+      slot-scope="{ item }">
+      <md-button class="md-icon-button" @click="supprimerRestaurant(item.id)">
+            <md-icon>delete</md-icon>
+          </md-button>&nbsp;&nbsp;
+          </md-table-row>
+
+
       <md-table-row
     
         slot="md-table-row"
-        slot-scope="{ item, index }"
+        slot-scope="{ item, index }" :md-disabled="item.name.includes('Stave')" 
+        md-selectable="multiple" md-auto-select
         :style="{ backgroundColor: getColor(index) }"
         :class="{ bordureRouge: index === 2 }"
       >
@@ -108,9 +133,7 @@
 import _ from "lodash";
 export default {
   name: "app",
-  components: {
-
-  },
+  components: {},
   namee: "ListeDesRestaurants",
   data: function () {
     return {
@@ -124,6 +147,7 @@ export default {
       nbPagesTotal: 0,
       msg: "",
       nomRestauRecherche: "",
+      selected: [],
     };
   },
   mounted() {
@@ -137,6 +161,22 @@ export default {
       this.page--;
       this.getRestaurantsFromServer();
     },
+
+    onSelect(items) {
+      this.selected = items;
+    },
+
+
+    getAlternateLabel(count) {
+      var plural = '';
+
+      if (count > 1) {
+        plural = 's';
+      }
+
+      return `${count} user${plural} selected`
+    },
+
     pageSuivante() {
       if (this.page === this.dernierePage) return;
       this.page++;
@@ -223,7 +263,7 @@ export default {
       this.ville = "";
     },
     getColor(index) {
-      return index % 2 ? "lightBlue" : "pink";
+      return index % 2 ? "lightBlue" : "lightBlue";
     },
   },
 };
@@ -233,5 +273,9 @@ export default {
 <style  scoped>
 h1 {
   background-color: yellow;
-}
+};
+
+.md-table + .md-table {
+    margin-top: 16px
+  };
 </style>
