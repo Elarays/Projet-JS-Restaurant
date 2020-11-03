@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <h2>{{ msg }}</h2>
-    <form @submit.prevent="ajouterRestaurant(event)">
+<!-- Liste des restaurants -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Restaurants</h2>
+            <h3 class="section-subheading text-muted">La liste des Restaurants.</h3>
+          </div>
+        </div>
+            <h2>{{ msg }}</h2>
+            
+    <!-- <form @submit.prevent="ajouterRestaurant(event)">
       <label>
         Nom : <input name="nom" type="text" required v-model="nom" />
       </label>
@@ -12,16 +21,17 @@
 
       <button>Ajouter</button>
     </form>
-
-    <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1>
-    <p>
+ -->
+    
+    
+    <!-- <p>
       Chercher par nom :
       <input
         @input="chercherRestaurants()"
         type="text"
         v-model="nomRestauRecherche"
       />
-    </p>
+    </p> -->
     <p>Nb de pages total : {{ nbPagesTotal }}</p>
     <p>
       Nb restaurants par page :
@@ -46,9 +56,23 @@
     &nbsp; Page courante : {{ page }}
     <br />
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
+      <md-table-toolbar>
+        <div class="md-toolbar-section-start">
+        </div>
+
+        <md-field md-clearable class="md-toolbar-section-end">
+          <md-input placeholder="Search by name..." v-model="nomRestauRecherche" type="text"  @input="chercherRestaurants()" />
+        </md-field>
+      </md-table-toolbar>
+
+      <md-table-empty-state
+        md-label="No restaurant found"
+        :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new user.`">
+      </md-table-empty-state>
       <md-table-row>
         <md-table-head>Nom</md-table-head>
         <md-table-head>Cuisine</md-table-head>
+        <md-table-head>Ville</md-table-head>
       </md-table-row>
       <md-table-row
     
@@ -57,30 +81,43 @@
         :style="{ backgroundColor: getColor(index) }"
         :class="{ bordureRouge: index === 2 }"
       >
-        <md-table-cell md-label="Name" md-sort-by="name">{{
-          item.name
-        }}</md-table-cell>
-        <md-table-cell md-label="cuisine" md-sort-by="cuisine">{{
+        <md-table-cell md-label="Name" md-sort-by="name">
+          {{item.name}}
+        </md-table-cell>
+        <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
           item.cuisine
         }}</md-table-cell>
+        <md-table-cell md-label="Ville" md-sort-by="borough">
+          {{item.borough}}
+        </md-table-cell>
         <md-table-cell md-label="Action">
-          <router-link :to="'/restaurant/' + item._id">[Detail d'un Restaurant]
-          </router-link>
+        
+
+         <router-link tag="button" :to="'/Restaurant/' + item._id">
+                 [Detail d'un Restaurant] </router-link>
+
+
         </md-table-cell>
       </md-table-row>
     </md-table>
-  </div>
+      </div>
+    </section>
 </template>
 
 <script>
 import _ from "lodash";
 export default {
-  name: "ListeDesRestaurants",
+  name: "app",
+  components: {
+
+  },
+  namee: "ListeDesRestaurants",
   data: function () {
     return {
       restaurants: [],
       nom: "",
       cuisine: "",
+      ville: "",
       nbRestaurantsTotal: 0,
       page: 0,
       pagesize: 10,
@@ -183,6 +220,7 @@ export default {
 
       this.nom = "";
       this.cuisine = "";
+      this.ville = "";
     },
     getColor(index) {
       return index % 2 ? "lightBlue" : "pink";
@@ -192,7 +230,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style  scoped>
 h1 {
   background-color: yellow;
 }

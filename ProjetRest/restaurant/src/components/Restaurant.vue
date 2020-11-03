@@ -1,18 +1,70 @@
 <template>
-  <div>
-    <h1>detail du restaurant qui a pour id : {{ id }}</h1>
-    <ul>
-      <li>Cuisine : {{ restaurant.cuisine }}</li>
+<v-card
+    :loading="loading"
+    class="mx-auto my-12"
+    max-width="374"
+  >
+  <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+    
+    <v-img
+      height="250"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+    ></v-img>
+    <v-card-title> {{this.restaurant.name }} </v-card-title>
 
-      <li>Nom : {{ restaurant.name }}</li>
-    </ul>
-  </div>
+
+     <v-card-text>
+      <v-row
+        align="center"
+        class="mx-0"
+      >
+        <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">
+          4.5 (413)
+        </div>
+      </v-row>
+
+      <div class="my-4 subtitle-1">
+        {{ this.restaurant.cuisine }}
+      </div>
+
+      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-title>Tonight's availability</v-card-title>
+
+    <v-card-actions>
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+        @click="Commander"
+      >
+        Commandé
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
+
 
 <script>
 export default {
   name: "Restaurant",
-  props: {},
   computed: {
     id() {
       return this.$route.params.id;
@@ -20,23 +72,33 @@ export default {
   },
   data: function () {
     return {
-      restaurant: null,
+      restaurant: "",
+      loading: false,
     };
   },
   mounted() {
     console.log("Avant affichage, on pourra faire un fetch... ");
     console.log("ID = " + this.id);
-    let url = "http://localhost:8080/api/restaurants/" + this.id;
-    fetch(url)
-      .then((reponse) => {
-        return reponse.json();
-      })
-      .then((data) => {
-        console.log(data.restaurant.name);
-        this.restaurant = data.restaurant;
-      });
+    this.fetchOneRestaurant()
+    
   },
-  methods: {},
+  methods: {
+    fetchOneRestaurant() {
+      let url = "http://localhost:8080/api/restaurants/"+  this.id;
+      fetch(url)
+        .then((reponse) => {
+          return reponse.json();
+        })
+        .then((data) => {
+          console.log(data.restaurant);
+          this.restaurant = data.restaurant;
+        });
+    },
+    Commander(){
+      this.loading=true
+      setTimeout(() => (this.loading = false), 2000)
+    },
+  },
 };
 </script>
 
