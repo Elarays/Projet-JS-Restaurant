@@ -22,7 +22,9 @@
       <button>Ajouter</button>
     </form>
  -->
-    
+
+ 
+
     
     <!-- <p>
       Chercher par nom :
@@ -55,7 +57,7 @@
     </md-button>
     &nbsp; Page courante : {{ page }}
     <br />
-    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
+    <md-table md-card @md-selected="onSelect" v-model="restaurants" md-sort="name" md-sort-order="asc">
 
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
@@ -70,32 +72,31 @@
       <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
         <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
         <div class="md-toolbar-section-end">
-          <md-button class="md-icon-button" @click="supprimerRestaurant(r.id)">
+        </div>
+        <div class="md-toolbar-section-end">
+          <md-button class="md-icon-button" @click="Delete()">
             <md-icon>delete</md-icon>
           </md-button>&nbsp;&nbsp;
         </div>
-        </md-table-toolbar>
+      </md-table-toolbar>
+
+      
         
       
       
       <md-table-empty-state
         md-label="No restaurant found"
-        :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new user.`">
+        :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new restaurant.`">
       </md-table-empty-state>
       <md-table-row>
         <md-table-head>Nom</md-table-head>
         <md-table-head>Cuisine</md-table-head>
         <md-table-head>Ville</md-table-head>
       </md-table-row>
+
       
       
-      <md-table-row
-      slot="md-table-row"
-      slot-scope="{ item }">
-      <md-button class="md-icon-button" @click="supprimerRestaurant(item.id)">
-            <md-icon>delete</md-icon>
-          </md-button>&nbsp;&nbsp;
-          </md-table-row>
+
 
 
       <md-table-row
@@ -148,6 +149,7 @@ export default {
       msg: "",
       nomRestauRecherche: "",
       selected: [],
+
     };
   },
   mounted() {
@@ -174,7 +176,7 @@ export default {
         plural = 's';
       }
 
-      return `${count} user${plural} selected`
+      return `${count} restaurant${plural} selected`
     },
 
     pageSuivante() {
@@ -209,6 +211,13 @@ export default {
       // appelée que si on n'a pas tapé de touches pendant un certain délai
       this.getRestaurantsFromServer();
     }, 300),
+
+    Delete() {
+      this.selected.forEach((restaurant_list) => {
+        this.supprimerRestaurant(restaurant_list);
+      });
+    },
+
     supprimerRestaurant(r) {
       let url = "http://localhost:8080/api/restaurants/" + r._id;
 
@@ -219,7 +228,7 @@ export default {
           responseJSON.json().then((resJS) => {
             // Maintenant res est un vrai objet JavaScript
             console.log(resJS.msg);
-            this.msg = resJS.msg;
+            //this.msg = resJS.msg;
             // On rafraichit la vue
             this.getRestaurantsFromServer();
           });
