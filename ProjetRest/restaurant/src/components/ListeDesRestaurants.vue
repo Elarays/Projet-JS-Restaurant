@@ -21,7 +21,9 @@
       <button>Ajouter</button>
     </form>
  -->
-    
+
+ 
+
     
     <!-- <p>
       Chercher par nom :
@@ -32,18 +34,19 @@
       />
     </p> -->
     <p>
-      Nb restaurants par page :
-      <input
+      <v-slider
         @input="getRestaurantsFromServer()"
         type="range"
         min="2"
-        max="1000"
+        max="25"
         v-model="pagesize"
-      />{{ pagesize }}
+        label = "Nb de Restaurants par page"
+      ></v-slider>
+      {{ pagesize }}
     </p>
-    &nbsp; Page courante : {{ page }}
     <br />
-    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
+    <md-table md-card @md-selected="onSelect" v-model="restaurants" md-sort="name" md-sort-order="asc">
+
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
         </div>
@@ -51,21 +54,39 @@
 
           <md-input placeholder="Search by name..." v-model="nomRestauRecherche" type="text"  @input="chercherRestaurants()" />
         </md-field>
+        </md-table-toolbar>
+
+
+      <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
+        <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
+        <div class="md-toolbar-section-end">
+        </div>
+        <div class="md-toolbar-section-end">
+          <md-button class="md-icon-button" @click="Delete()">
+            <md-icon>delete</md-icon>
+          </md-button>&nbsp;&nbsp;
+        </div>
       </md-table-toolbar>
 
+      
+        
+      
+      
       <md-table-empty-state
         md-label="No restaurant found"
-        :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new user.`">
+        :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new restaurant.`">
       </md-table-empty-state>
       <md-table-row>
         <md-table-head>Nom</md-table-head>
         <md-table-head>Cuisine</md-table-head>
         <md-table-head>Ville</md-table-head>
       </md-table-row>
+
+      
       <md-table-row
-    
         slot="md-table-row"
-        slot-scope="{ item, index }"
+        slot-scope="{ item, index }" :md-disabled="item.name.includes('Stave')" 
+        md-selectable="multiple" md-auto-select
         :style="{ backgroundColor: getColor(index) }"
         :class="{ bordureRouge: index === 2 }"
       >
@@ -80,13 +101,20 @@
         </md-table-cell>
         <md-table-cell md-label="Action">
          <router-link tag="button" :to="'/Restaurant/' + item._id">
-                 [Detail d'un Restaurant] </router-link>
+                <v-btn
+          color="#B0C4DE"
+  elevation="6"
+  small >
+  Detail
+</v-btn> 
+</router-link>
 
 
         </md-table-cell>
       </md-table-row>
     </md-table>
     <p id ="total">Nb de pages total : {{ nbPagesTotal }}</p>
+    <p id = "pagecourant">&nbsp; Page courante : {{ page }} </p>
     <p>
     <div class = "bouton" >
      <v-btn  color = "accent" :disabled ="page ===0 " elevation="3"
@@ -109,9 +137,7 @@
 import _ from "lodash";
 export default {
   name: "app",
-  components: {
-
-  },
+  components: {},
   namee: "ListeDesRestaurants",
   data: function () {
     return {
@@ -125,6 +151,8 @@ export default {
       nbPagesTotal: 0,
       msg: "",
       nomRestauRecherche: "",
+      selected: [],
+
     };
   },
   mounted() {
@@ -138,6 +166,22 @@ export default {
       this.page--;
       this.getRestaurantsFromServer();
     },
+
+    onSelect(items) {
+      this.selected = items;
+    },
+
+
+    getAlternateLabel(count) {
+      var plural = '';
+
+      if (count > 1) {
+        plural = 's';
+      }
+
+      return `${count} restaurant${plural} selected`
+    },
+
     pageSuivante() {
       if (this.page === this.dernierePage) return;
       this.page++;
@@ -170,6 +214,13 @@ export default {
       // appelée que si on n'a pas tapé de touches pendant un certain délai
       this.getRestaurantsFromServer();
     }, 300),
+
+    Delete() {
+      this.selected.forEach((restaurant_list) => {
+        this.supprimerRestaurant(restaurant_list);
+      });
+    },
+
     supprimerRestaurant(r) {
       let url = "http://localhost:8080/api/restaurants/" + r._id;
 
@@ -180,7 +231,7 @@ export default {
           responseJSON.json().then((resJS) => {
             // Maintenant res est un vrai objet JavaScript
             console.log(resJS.msg);
-            this.msg = resJS.msg;
+            //this.msg = resJS.msg;
             // On rafraichit la vue
             this.getRestaurantsFromServer();
           });
@@ -224,7 +275,7 @@ export default {
       this.ville = "";
     },
     getColor(index) {
-      return index % 2 ? "lightBlue" : "pink";
+      return index % 2 ? "steelblue" : "lightblue";
     },
   },
 };
@@ -234,6 +285,7 @@ export default {
 <style  scoped>
 h1 {
   background-color: yellow;
+
 }
 .bouton{
   margin-left:  330px;
@@ -243,8 +295,14 @@ h1 {
 
 }
 #nbrest{
-  margin-right : 500 px ;
+    text-align: center;
 }
 
+.md-table + .md-table {
+    margin-top: 16px
+  }
+#pagecourant{
+    text-align: center;
+};
 
 </style>
