@@ -9,7 +9,6 @@
           </div>
         </div>
             <h2>{{ msg }}</h2>
-            
     <!-- <form @submit.prevent="ajouterRestaurant(event)">
       <label>
         Nom : <input name="nom" type="text" required v-model="nom" />
@@ -32,7 +31,6 @@
         v-model="nomRestauRecherche"
       />
     </p> -->
-    <p>Nb de pages total : {{ nbPagesTotal }}</p>
     <p>
       Nb restaurants par page :
       <input
@@ -43,24 +41,14 @@
         v-model="pagesize"
       />{{ pagesize }}
     </p>
-    <md-button md-raised :disabled="page === 0" @click="pagePrecedente()"
-      >Précédent</md-button
-    >&nbsp;&nbsp;
-    <md-button
-      md-raised
-      :disabled="page === nbPagesTotal"
-      @click="pageSuivante()"
-    >
-      Suivant
-    </md-button>
     &nbsp; Page courante : {{ page }}
     <br />
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
         </div>
-
         <md-field md-clearable class="md-toolbar-section-end">
+
           <md-input placeholder="Search by name..." v-model="nomRestauRecherche" type="text"  @input="chercherRestaurants()" />
         </md-field>
       </md-table-toolbar>
@@ -91,8 +79,6 @@
           {{item.borough}}
         </md-table-cell>
         <md-table-cell md-label="Action">
-        
-
          <router-link tag="button" :to="'/Restaurant/' + item._id">
                  [Detail d'un Restaurant] </router-link>
 
@@ -100,6 +86,21 @@
         </md-table-cell>
       </md-table-row>
     </md-table>
+    <p id ="total">Nb de pages total : {{ nbPagesTotal }}</p>
+    <p>
+    <div class = "bouton" >
+     <v-btn  color = "accent" :disabled ="page ===0 " elevation="3"
+     medium @click="pagePrecedente()"
+      >Précédent</v-btn
+    >&nbsp;&nbsp;
+    <v-btn 
+       color = "accent"
+      :disabled="page === nbPagesTotal" elevation="3" medium 
+      @click="pageSuivante()"
+    >
+      Suivant
+    </v-btn>
+    </div>
       </div>
     </section>
 </template>
@@ -234,4 +235,16 @@ export default {
 h1 {
   background-color: yellow;
 }
+.bouton{
+  margin-left:  330px;
+}
+#total{
+   margin-left:  365px;
+
+}
+#nbrest{
+  margin-right : 500 px ;
+}
+
+
 </style>
