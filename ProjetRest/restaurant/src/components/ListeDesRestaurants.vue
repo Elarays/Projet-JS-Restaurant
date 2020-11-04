@@ -1,7 +1,6 @@
 <template>
   <!-- Liste des restaurants -->
   <section id="services" v-bind:style="{ background: color }">
-    >
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -11,7 +10,7 @@
           </h3>
         </div>
       </div>
-      <h2>{{ msg }}</h2>
+      <!--<h2>{{ msg }}</h2>-->
 
       <v-dialog max-width="600px" v-model="dialog">
         <template v-slot:activator="{ on }">
@@ -64,31 +63,16 @@
             </v-form>
           </v-card-text>
         </v-card>
-      </v-dialog>
-
-      <p>Nb de pages total : {{ nbPagesTotal }}</p>
-      <p>
-        Nb restaurants par page :
-        <input
-          @input="getRestaurantsFromServer()"
-          type="range"
-          min="2"
-          max="1000"
-          v-model="pagesize"
-        />{{ pagesize }}
-      </p>
-      <md-button md-raised :disabled="page === 0" @click="pagePrecedente()"
-        >Précédent</md-button
-      >&nbsp;&nbsp;
-      <md-button
-        md-raised
-        :disabled="page === nbPagesTotal"
-        @click="pageSuivante()"
-      >
-        Suivant
-      </md-button>
-      &nbsp; Page courante : {{ page }}
-      <br />
+      </v-dialog>      
+      <v-slider
+        @input="getRestaurantsFromServer()"
+        type="range"
+        min="2"
+        max="25"
+        v-model="pagesize"
+        label = "Nb de Restaurants par page"
+         thumb-label="always"
+      ></v-slider>
 
       <!--tableau-->
       <md-table
@@ -98,8 +82,9 @@
         v-model="restaurants"
         md-sort="name"
         md-sort-order="asc"
+        
       >
-        <md-table-toolbar>
+        <md-table-toolbar >
           <div class="md-toolbar-section-start"></div>
 
           <md-field md-clearable class="md-toolbar-section-end">
@@ -111,21 +96,21 @@
             />
           </md-field>
         </md-table-toolbar>
-        <md-table-toolbar
+        <md-table-toolbar 
           slot="md-table-alternate-header"
           slot-scope="{ count }"
         >
-          <div class="md-toolbar-section-start">
+          <div class="md-toolbar-section-start" > 
             {{ getAlternateLabel(count) }}
           </div>
-          <div class="md-toolbar-section-end"></div>
-          <div class="md-toolbar-section-end">
+          <div class="md-toolbar-section-end" ></div>
+          <div class="md-toolbar-section-end" >
             <v-btn class="succes" @click="Delete()" :loading="loading">
               <v-icon dark>delete</v-icon>
             </v-btn>
           </div>
         </md-table-toolbar>
-        <md-table-empty-state
+        <md-table-empty-state 
           md-label="No restaurant found"
           :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new restaurant.`"
         >
@@ -133,8 +118,8 @@
             >Create New User</md-button
           >
         </md-table-empty-state>
-        <md-table-row class="headtab">
-          <md-table-head>Nom</md-table-head>
+        <md-table-row class="headtab" >
+          <md-table-head >Nom</md-table-head>
           <md-table-head>Cuisine</md-table-head>
           <md-table-head>Ville</md-table-head>
         </md-table-row>
@@ -145,10 +130,10 @@
           :md-disabled="item.name.includes('Stave')"
           md-selectable="multiple"
           md-auto-select
-          :style="{ backgroundColor: getColor(index) }"
+          v-bind:style="{ background: colorTable }"
           :class="{ bordureRouge: index === 2 }"
         >
-          <md-table-cell md-label="Name" md-sort-by="name">
+          <md-table-cell  md-label="Name" md-sort-by="name">
             {{ item.name }}
           </md-table-cell>
           <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
@@ -164,6 +149,22 @@
           </md-table-cell>
         </md-table-row>
       </md-table>
+      <p id ="total">Nb de pages total : {{ nbPagesTotal }}</p>
+    <p id = "pagecourant">&nbsp; Page courante : {{ page }} </p>
+    <p>
+    <div class = "bouton" >
+     <v-btn  color = "accent" :disabled ="page ===0 " elevation="3"
+     medium @click="pagePrecedente()"
+      >Précédent</v-btn
+    >&nbsp;&nbsp;
+    <v-btn 
+       color = "accent"
+      :disabled="page === nbPagesTotal" elevation="3" medium 
+      @click="pageSuivante()"
+    >
+      Suivant
+    </v-btn>
+    </div>
     </div>
   </section>
 </template>
@@ -192,6 +193,7 @@ export default {
       selected: [],
       loading: false,
       color: "linear-gradient(45deg, #49a09d, #5f2c82)",
+      colorTable: "light",
       inputRules: [
         (v) => !!v || "This field is required",
         (v) => v.length >= 3 || "Minimum length is 3 characters",
@@ -364,11 +366,11 @@ h1 {
 
 }
 .bouton{
-  margin-left:  330px;
+  margin-left:  450px;
   
 }
 #total{
-   margin-left:  365px;
+   text-align: center;
 
 }
 #nbrest{
