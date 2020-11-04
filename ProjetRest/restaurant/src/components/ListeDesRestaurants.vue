@@ -145,6 +145,8 @@ export default {
       nom: "",
       cuisine: "",
       ville: "",
+      adress :"",
+      street :"",
       nbRestaurantsTotal: 0,
       page: 0,
       pagesize: 10,
@@ -273,6 +275,8 @@ export default {
       this.nom = "";
       this.cuisine = "";
       this.ville = "";
+      this.adress = "";
+      this.street = "";
     },
     getColor(index) {
       return index % 2 ? "steelblue" : "lightblue";
@@ -289,6 +293,7 @@ h1 {
 }
 .bouton{
   margin-left:  330px;
+  
 }
 #total{
    margin-left:  365px;
