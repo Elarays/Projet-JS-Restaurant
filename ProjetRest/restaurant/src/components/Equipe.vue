@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <div class="block">
+    <div class="blurred-box">
       <v-main>
         <h2 class="text-center">Our Teams</h2>
         <v-row  >
@@ -59,9 +59,5 @@ export default {
 };
 </script>
 
-<style scoped>
-v-img{
-  padding: 60px;
-  margin-left: 60px;
-}
+<style lang="scss" scoped>
 </style>

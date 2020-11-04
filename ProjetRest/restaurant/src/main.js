@@ -6,6 +6,10 @@ import 'vue-material/dist/theme/default.css'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify';
 import "vuetify/dist/vuetify.min.css";
+import CxltToastr from 'cxlt-vue2-toastr'
+import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+
+
 
 
 
@@ -20,6 +24,13 @@ Vue.config.productionTip = false
 Vue.use(VueMaterial)
 Vue.use(VueRouter);
 Vue.use(Vuetify)
+
+
+var toastrConfigs = {
+  position: 'top right',
+  showDuration: 1000,
+}
+Vue.use(CxltToastr, toastrConfigs)
 
 
 // On definit des routes
