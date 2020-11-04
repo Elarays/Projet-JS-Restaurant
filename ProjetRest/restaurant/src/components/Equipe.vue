@@ -37,7 +37,7 @@ export default {
       items: [
         {
           id: 1,
-          src: require("../assets/img/image1.jpg"),
+          src: require("../assets/img/Mohamed.jpeg"),
           name: 'Mohamed Benabdelkrim',
           title: 'Etudiant'
         },

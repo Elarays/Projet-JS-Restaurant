@@ -111,7 +111,6 @@
             />
           </md-field>
         </md-table-toolbar>
-
         <md-table-toolbar
           slot="md-table-alternate-header"
           slot-scope="{ count }"
@@ -126,7 +125,6 @@
             </v-btn>
           </div>
         </md-table-toolbar>
-
         <md-table-empty-state
           md-label="No restaurant found"
           :md-description="`No restaurant found for this '${search}' query. Try a different search term or create a new restaurant.`"
@@ -182,6 +180,8 @@ export default {
       nom: "",
       cuisine: "",
       ville: "",
+      adress :"",
+      street :"",
       nbRestaurantsTotal: 0,
       page: 0,
       search: "",
@@ -337,24 +337,49 @@ export default {
           .catch(function (err) {
             console.log(err);
           });
-
-        this.nom = "";
-        this.cuisine = "";
-        this.ville = "";
+      this.nom = "";
+      this.cuisine = "";
+      this.ville = "";
+      this.adress = "";
+      this.street = "";
       }
+
     },
     getColor(index) {
-      return index % 2 ? "lightBlue" : "lightBlue";
+      return index % 2 ? "steelblue" : "lightblue";
     },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="css" >
+<style  scoped>
+
 .btnajout {
   margin-left: 120ch;
   margin-top: 50px;
 }
-</style>>
+h1 {
+  background-color: yellow;
 
+}
+.bouton{
+  margin-left:  330px;
+  
+}
+#total{
+   margin-left:  365px;
+
+}
+#nbrest{
+    text-align: center;
+}
+
+.md-table + .md-table {
+    margin-top: 16px
+  }
+#pagecourant{
+    text-align: center;
+};
+
+</style>

@@ -41,6 +41,12 @@
       <div class="my-4 subtitle-1">
         {{ this.restaurant.cuisine }}
       </div>
+      <div class="my-4 subtitle-1">
+        <p> Adress :  {{ this.restaurant.address.building }} {{ this.restaurant.address.street }} {{ this.restaurant.address.zipcode }} , {{ this.restaurant.borough }}.
+        </p>
+      </div>
+      
+      
 
       <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
     </v-card-text>
