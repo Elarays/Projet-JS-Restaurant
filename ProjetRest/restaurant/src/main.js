@@ -8,6 +8,7 @@ import Vuetify from 'vuetify';
 import "vuetify/dist/vuetify.min.css";
 import CxltToastr from 'cxlt-vue2-toastr'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+import * as GmapVue from 'gmap-vue'
 
 
 
@@ -68,4 +69,14 @@ new Vue({
   router,
   vuetify: new Vuetify(),
   render: h => h(App),
-}).$mount('#app')
+}
+).$mount('#app')
+
+
+Vue.use(GmapVue, {
+  load: {
+    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
+    libraries: 'places', 
+  },
+  installComponents: true
+})

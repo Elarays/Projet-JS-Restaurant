@@ -8,10 +8,9 @@
       <v-progress-linear
         color="deep-purple"
         height="10"
-        indeterminate
+        indeterminate 
       ></v-progress-linear>
-    </template>
-    
+    </template> 
     <v-img
       height="250"
       src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
@@ -64,17 +63,29 @@
         Commandé
       </v-btn>
     </v-card-actions>
+    <GmapMap
+              :center="{
+              lat: this.restaurant.address.coord[1],
+              lng: this.restaurant.address.coord[0],
+            }"
+              :zoom="19"
+              map-type-id="terrain"
+              style="width: 600px; height: 400px"
+          >
+          </GmapMap>
   </v-card>
 </template>
 
 
 <script>
+import { gmapApi } from 'gmap-vue';
 export default {
   name: "Restaurant",
   computed: {
     id() {
       return this.$route.params.id;
     },
+    google: gmapApi,
   },
   data: function () {
     return {
@@ -83,6 +94,9 @@ export default {
     };
   },
   mounted() {
+    //this.$refs.mapRef.$mapPromise.then((map) => {
+        //map.panTo({lat: 1.38, lng: 103.80})
+      //})
     console.log("Avant affichage, on pourra faire un fetch... ");
     console.log("ID = " + this.id);
     this.fetchOneRestaurant()
