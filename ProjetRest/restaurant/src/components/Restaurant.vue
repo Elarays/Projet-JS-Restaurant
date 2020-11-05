@@ -1,4 +1,5 @@
 <template>
+<v-main>
 <v-card
     :loading="loading"
     class="mx-auto my-12"
@@ -63,7 +64,19 @@
         Commandé
       </v-btn>
     </v-card-actions>
-    <GmapMap
+   <!--  <GmapMap
+              :center="{
+              lat: this.restaurant.address.coord[1],
+              lng: this.restaurant.address.coord[0],
+            }"
+              :zoom="19"
+              map-type-id="terrain"
+              style="width: 600px; height: 400px"
+          >
+          </GmapMap> -->
+  </v-card>
+  <div class ="map">
+  <GmapMap
               :center="{
               lat: this.restaurant.address.coord[1],
               lng: this.restaurant.address.coord[0],
@@ -73,7 +86,10 @@
               style="width: 600px; height: 400px"
           >
           </GmapMap>
-  </v-card>
+
+  </div>
+  </v-main>
+  
 </template>
 
 
@@ -124,4 +140,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.map:before {
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    
+}
+
+
 </style>
