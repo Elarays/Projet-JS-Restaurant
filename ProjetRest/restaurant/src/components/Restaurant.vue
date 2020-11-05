@@ -61,7 +61,7 @@
         text
         @click="Commander"
       >
-        Commandé
+        Order
       </v-btn>
     </v-card-actions>
    
@@ -74,7 +74,7 @@
             }"
               :zoom="19"
               map-type-id="terrain"
-              style="width: 600px; height: 400px"
+              style="width: 650px; height: 400px"
           >
           </GmapMap>
   </div>

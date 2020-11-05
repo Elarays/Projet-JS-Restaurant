@@ -60,7 +60,7 @@
                 class="success mx-0 mt-3"
                 :loading="loading"
               >
-                Ajouter
+                Add
               </v-btn>
             </v-form>
           </v-card-text>
