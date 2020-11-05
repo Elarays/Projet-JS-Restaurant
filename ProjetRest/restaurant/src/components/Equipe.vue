@@ -39,7 +39,7 @@ export default {
           id: 1,
           src: require("../assets/img/Mohamed.jpeg"),
           name: 'Mohamed Benabdelkrim',
-          title: 'Etudiant'
+          title: 'Student'
         },
         {
           id: 3,
@@ -51,7 +51,7 @@ export default {
           id: 2,
           src: require("../assets/img/said.jpeg"),
           name: 'Said Elarays',
-          title: 'Etudiant'
+          title: 'Student'
         },
       ]
     };

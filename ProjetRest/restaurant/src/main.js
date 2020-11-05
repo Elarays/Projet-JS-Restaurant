@@ -40,7 +40,8 @@ Vue.use(GmapVue, {
 
 var toastrConfigs = {
   position: 'top right',
-  showDuration: 1000,
+  showDuration: 2000,
+  showHidden: 2000,
 }
 Vue.use(CxltToastr, toastrConfigs)
 

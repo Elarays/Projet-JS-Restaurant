@@ -33,7 +33,7 @@
               <v-text-field
                 required
                 v-model="nom"
-                label="Nom-restaurant"
+                label="restaurant name"
                 name="nom"
                 prepend-icon="star"
                 :rules="inputRules"
@@ -41,14 +41,14 @@
               <v-text-field
                 required
                 v-model="cuisine"
-                label="cuisine"
+                label="cooking"
                 name="cuisine"
                 prepend-icon="edit"
                 :rules="inputRules"
               ></v-text-field>
               <v-text-field
                 v-model="ville"
-                label="ville"
+                label="city"
                 prepend-icon="edit"
                 :rules="inputRules"
               >
@@ -278,11 +278,14 @@ export default {
 
       let url = "http://localhost:8080/api/restaurants/" + r._id;
        this.$toast.success({
-                title: "Catatrophe !!!",
+                title: "A disaster !!!",
                 showMethod: "fadeInRight",
                 hideMethod: "lightSpeedOut",
-                message: "un restaurant viens de nous quitter !",
+                message: "the restaurant has been removed",
                 color: "#0B58B2",
+                showDuration: 300,
+                hideDuration: 1000,
+                timeOut: 1400,
               });
 
       fetch(url, {
@@ -330,8 +333,11 @@ export default {
                 title: "YOUPI !!!",
                 showMethod: "fadeInRight",
                 hideMethod: "lightSpeedOut",
-                message: "un restaurant viens d'etre ajouté !",
+                message: "a restaurant has been added !",
                 color: "#0B58B2",
+                showDuration: 300,
+                hideDuration: 1000,
+                timeOut: 1400,
               });
               //this.msg = resJS.msg;
 
