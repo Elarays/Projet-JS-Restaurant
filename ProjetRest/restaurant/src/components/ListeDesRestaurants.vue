@@ -15,12 +15,12 @@
       <v-dialog max-width="600px" v-model="dialog">
         <template v-slot:activator="{ on }">
           <div class="btnajout">
-            <v-btn slot="activator" v-on="on">Add New Restaurant</v-btn>
+            <v-btn class="btn third" slot="activator" v-on="on">Add New Restaurant</v-btn>
           </div>
         </template>
         <v-card>
           <v-card-title>
-            <h2>Add Restaurant</h2>
+            <h2>Adding Restaurant</h2>
           </v-card-title>
           <v-card-text>
             <v-form
@@ -33,7 +33,7 @@
                 v-model="nom"
                 label="Nom-restaurant"
                 name="nom"
-                prepend-icon="folder"
+                prepend-icon="star"
                 :rules="inputRules"
               ></v-text-field>
               <v-text-field
@@ -144,7 +144,7 @@
           </md-table-cell>
           <md-table-cell md-label="Action">
             <router-link tag="button" :to="'/Restaurant/' + item._id">
-              [Detail d'un Restaurant]
+              <v-btn class="btn fifth" >Detail </v-btn>
             </router-link>
           </md-table-cell>
         </md-table-row>
@@ -153,13 +153,13 @@
     <p id = "pagecourant">&nbsp; Page courante : {{ page }} </p>
     <p>
     <div class = "bouton" >
-     <v-btn  color = "accent" :disabled ="page ===0 " elevation="3"
-     medium @click="pagePrecedente()"
+     <v-btn class="first" :disabled ="page ===0 " 
+      @click="pagePrecedente()"
       >Précédent</v-btn
     >&nbsp;&nbsp;
-    <v-btn 
-       color = "accent"
-      :disabled="page === nbPagesTotal" elevation="3" medium 
+    <v-btn class="first"
+       
+      :disabled="page === nbPagesTotal" 
       @click="pageSuivante()"
     >
       Suivant
@@ -356,6 +356,95 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  scoped>
+
+
+
+
+
+
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid #9576bd;
+  border-radius: 0.6em;
+  color: #9576bd;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.third {
+  border-color: "linear-gradient(45deg, #49a09d, #5f2c82)";
+  color: "linear-gradient(45deg, #49a09d, #5f2c82)";
+  box-shadow: 0 0 40px 40px #cbd4df inset, 0 0 0 0 #9576bd;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.third:hover {
+  box-shadow: 0 0 10px 0 #000203 inset, 0 0 10px 4px#9576bd;
+}
+
+
+.first {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.first:hover {
+  box-shadow: 0 0 40px 40px #7792b9 inset;
+}
+
+
+
+.fifth {
+  border-color: #8e44ad;
+  border-radius: 0;
+  color: #8e44ad;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 150ms ease-in-out;
+}
+.fifth:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: #8e44ad;
+  z-index: -1;
+  -webkit-transition: width 150ms ease-in-out;
+  transition: width 150ms ease-in-out;
+}
+.fifth:hover {
+  color: #fff;
+}
+.fifth:hover:after {
+  width: 110%;
+}
+
 
 .btnajout {
   margin-left: 120ch;

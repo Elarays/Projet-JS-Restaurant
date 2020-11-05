@@ -27,7 +27,7 @@ export default {
       items: [
         {
           src: require("../assets/img/image1.jpg"),
-          title: "We are creative",
+          title: "Welcome to our project ",
         },
         {
           src: require("../assets/img/image2.jpg"),

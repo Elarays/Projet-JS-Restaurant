@@ -10,10 +10,6 @@ import CxltToastr from 'cxlt-vue2-toastr'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 import * as GmapVue from 'gmap-vue'
 
-
-
-
-
 import ListeDesRestaurants from './components/ListeDesRestaurants'
 import Restaurant from './components/Restaurant'
 import HelloWorld from './components/HelloWorld'
@@ -25,6 +21,13 @@ Vue.config.productionTip = false
 Vue.use(VueMaterial)
 Vue.use(VueRouter);
 Vue.use(Vuetify)
+Vue.use(GmapVue, {
+  load: {
+    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
+    libraries: 'places', 
+  },
+  installComponents: true
+})
 
 
 var toastrConfigs = {
@@ -73,10 +76,4 @@ new Vue({
 ).$mount('#app')
 
 
-Vue.use(GmapVue, {
-  load: {
-    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
-    libraries: 'places', 
-  },
-  installComponents: true
-})
+

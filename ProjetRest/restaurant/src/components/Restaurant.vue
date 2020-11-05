@@ -64,16 +64,7 @@
         Commandé
       </v-btn>
     </v-card-actions>
-   <!--  <GmapMap
-              :center="{
-              lat: this.restaurant.address.coord[1],
-              lng: this.restaurant.address.coord[0],
-            }"
-              :zoom="19"
-              map-type-id="terrain"
-              style="width: 600px; height: 400px"
-          >
-          </GmapMap> -->
+   
   </v-card>
   <div class ="map">
   <GmapMap
