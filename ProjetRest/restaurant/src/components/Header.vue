@@ -5,8 +5,8 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn text><router-link to="/">Home</router-link></v-btn>
-        <v-btn text><router-link to="/Equipe">Equipe</router-link></v-btn>
-        <v-btn text><router-link to="/ListeDesRestaurants">Liste des restaurants</router-link></v-btn>
+        <v-btn text><router-link to="/Equipe">Team</router-link></v-btn>
+        <v-btn text><router-link to="/ListeDesRestaurants">List of restaurants</router-link></v-btn>
       </v-toolbar-items>
       <div class="hidden-sm-and-up">
         <v-menu offset-y>

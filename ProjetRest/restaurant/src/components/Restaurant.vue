@@ -67,7 +67,7 @@
    
   </v-card>
   <div class ="map">
-  <GmapMap
+  <GmapMap 
               :center="{
               lat: this.restaurant.address.coord[1],
               lng: this.restaurant.address.coord[0],
@@ -77,7 +77,6 @@
               style="width: 600px; height: 400px"
           >
           </GmapMap>
-
   </div>
   </v-main>
   
@@ -131,12 +130,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.map:before {
-    display: block;
-    margin-left: auto;
-    margin-right: auto ;
-    
+.map{
+   display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
 </style>

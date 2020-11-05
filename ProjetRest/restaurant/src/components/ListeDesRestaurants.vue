@@ -6,7 +6,7 @@
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Restaurants</h2>
           <h3 class="section-subheading text-muted">
-            La liste des Restaurants.
+           The list of restaurants.
           </h3>
         </div>
       </div>
@@ -15,7 +15,9 @@
       <v-dialog max-width="600px" v-model="dialog">
         <template v-slot:activator="{ on }">
           <div class="btnajout">
+
             <v-btn class="btn third" slot="activator" v-on="on">Add New Restaurant</v-btn>
+           
           </div>
         </template>
         <v-card>
@@ -70,7 +72,7 @@
         min="2"
         max="25"
         v-model="pagesize"
-        label = "Nb de Restaurants par page"
+        label = "Number of Restaurants per page "
          thumb-label="always"
       ></v-slider>
 
@@ -136,10 +138,10 @@
           <md-table-cell  md-label="Name" md-sort-by="name">
             {{ item.name }}
           </md-table-cell>
-          <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
+          <md-table-cell md-label="Cooking" md-sort-by="cuisine">{{
             item.cuisine
           }}</md-table-cell>
-          <md-table-cell md-label="Ville" md-sort-by="borough">
+          <md-table-cell md-label="City" md-sort-by="borough">
             {{ item.borough }}
           </md-table-cell>
           <md-table-cell md-label="Action">
@@ -149,20 +151,22 @@
           </md-table-cell>
         </md-table-row>
       </md-table>
-      <p id ="total">Nb de pages total : {{ nbPagesTotal }}</p>
-    <p id = "pagecourant">&nbsp; Page courante : {{ page }} </p>
+      <h4 id ="total"> <b>Total number of pages: </b>{{ nbPagesTotal }}</h4>
+    <h4 id = "pagecourant">&nbsp; <b>current page:</b> {{ page }} </h4>
     <p>
     <div class = "bouton" >
+
      <v-btn class="first" :disabled ="page ===0 " 
       @click="pagePrecedente()"
-      >Précédent</v-btn
+      >Previous</v-btn
+
     >&nbsp;&nbsp;
     <v-btn class="first"
        
       :disabled="page === nbPagesTotal" 
       @click="pageSuivante()"
     >
-      Suivant
+      Next
     </v-btn>
     </div>
     </div>
@@ -455,7 +459,9 @@ h1 {
 
 }
 .bouton{
-  margin-left:  450px;
+ display: flex;
+  align-items: center;
+  justify-content: center;
   
 }
 #total{
@@ -465,6 +471,9 @@ h1 {
 #nbrest{
     text-align: center;
 }
+.btnajout{
+  display: flex;
+  align-items: center;} 
 
 .md-table + .md-table {
     margin-top: 16px

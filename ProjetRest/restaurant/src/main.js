@@ -29,6 +29,14 @@ Vue.use(GmapVue, {
   installComponents: true
 })
 
+Vue.use(GmapVue, {
+  load: {
+    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
+    libraries: 'places', 
+  },
+  installComponents: true
+})
+
 
 var toastrConfigs = {
   position: 'top right',
