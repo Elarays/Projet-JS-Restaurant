@@ -26,6 +26,14 @@ Vue.use(VueMaterial)
 Vue.use(VueRouter);
 Vue.use(Vuetify)
 
+Vue.use(GmapVue, {
+  load: {
+    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
+    libraries: 'places', 
+  },
+  installComponents: true
+})
+
 
 var toastrConfigs = {
   position: 'top right',
@@ -73,10 +81,4 @@ new Vue({
 ).$mount('#app')
 
 
-Vue.use(GmapVue, {
-  load: {
-    key: "AIzaSyAi5Vi3-s_9g2b_0V8RgE41aGsuzAyL9k8",
-    libraries: 'places', 
-  },
-  installComponents: true
-})
+
