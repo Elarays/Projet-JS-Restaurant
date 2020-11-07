@@ -23,10 +23,10 @@ Bonjour, ce projet a été réaliser dans le cadre de la discipline [introductio
 
 **Languages and Tools:**  
 
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code> 49.8% ██████████▓░░░░░░░░░░░░░░ 
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/vue/vue.png"></code> 35.9%  ███████▒░░░░░░░░░░░░░░░░░
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code> 13.4%  ████▓░░░░░░░░░░░░░░░░░░░░
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png"></code> 0.9%  ▒░░░░░░░░░░░░░░░░░░░░░░░░
+<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"><p></code> 49.8% ██████████▓░░░░░░░░░░░░░░ </p>
+<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/vue/vue.png"></code> <p>35.9%  ███████▒░░░░░░░░░░░░░░░░░</p>
+<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code><p> 13.4%  ████▓░░░░░░░░░░░░░░░░░░░░</p>
+<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png"></code> <p>0.9%  ▒░░░░░░░░░░░░░░░░░░░░░░░░</p>
 
 
 🚧 **les taches accomplies:**
