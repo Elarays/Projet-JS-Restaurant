@@ -44,6 +44,6 @@ Bonjour, ce projet a été réaliser dans le cadre de la discipline [introductio
 
 
 
- <p> <b>voici le lien Youtube de la video :  </b> <a href="https://www.youtube.com/watch?v=2ehr4SgMlo4&list=RD2ehr4SgMlo4&start_radio=1&ab_channel=HaydarZaiter%2F%D8%AD%D9%8A%D8%AF%D8%B1%D8%B2%D8%B9%D9%8A%D8%AA%D8%B1"> 
+ <p> <b>voici le lien Youtube de la video :  </b> <a href="https://youtu.be/K9ItIiDLmB4"> 
   <img align="center" alt="said" width="60px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" /> 
 </a></p> 
