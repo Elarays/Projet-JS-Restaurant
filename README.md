@@ -1,7 +1,10 @@
 
-# Projet-JS-Restaurant
+# Projet-JS-Restaurant 
+<img src="https://juniormiageconcept.com/wp-content/uploads/2019/03/nouveaumiageslider.jpg" width="400px" align="right">
 
-### Hey  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px">
+### Hey  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px"> <br /> 
+<br />
+
 ## Participant :
 | *Nom et Prenom* | *Pseudo* |
 | ------ | ------ |
@@ -14,8 +17,8 @@
   
 <br />
 
-Bonjour, ce projet a été réaliser dans le cadre de la discipline [introduction a js](http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa/M1_Miage_2020-2021_Technologies_Web) 🚀 .
- Collaborator du projet  🙍🏽‍♂️ [@Mohamed](https://github.com/Mohamed0002) & 🙍🏽‍♂️ [@Said](https://github.com/Elarays), Mentor 👨🏽‍💼[@M.Buffa](http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa) 
+Bonjour, <br /> ce projet a été réaliser dans le cadre de la discipline [introduction a js](http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa/M1_Miage_2020-2021_Technologies_Web) 🚀 .
+ Collaborateur du projet  🙍🏽‍♂️ [@Mohamed](https://github.com/Mohamed0002) & 🙍🏽‍♂️ [@Said](https://github.com/Elarays), encadrant 👨🏽‍💼[@M.Buffa](http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa) 
   
   <img align="right" alt="GIF" 
   src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
