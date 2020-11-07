@@ -44,6 +44,6 @@ Bonjour, ce projet a été réaliser dans le cadre de la discipline [introductio
 
 
 
- <p> <b>voici le lien Youtube de la video :  </b> <a href="https://youtu.be/K9ItIiDLmB4"> 
+ <p> <img src="https://media.giphy.com/media/8wcFUBQPF37i4n4k5y/giphy.gif" width="100px"> <b>voici le lien Youtube de la video :  </b> <a href="https://youtu.be/K9ItIiDLmB4"> 
   <img align="center" alt="said" width="60px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />
-</a> <img src="https://media.giphy.com/media/KFPokUgqgeRqb6qWoj/giphy.gif" width="100px"></p> 
+</a></p> 
