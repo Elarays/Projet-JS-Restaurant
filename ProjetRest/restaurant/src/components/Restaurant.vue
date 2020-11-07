@@ -76,6 +76,13 @@
               map-type-id="terrain"
               style="width: 650px; height: 400px"
           >
+          <GmapMarker
+                v-bind:position="{
+                  lat: this.restaurant.address.coord[1],
+                  lng: this.restaurant.address.coord[0],
+                }"
+                v-bind:clickable="true"
+              />
           </GmapMap>
   </div>
   </v-main>
